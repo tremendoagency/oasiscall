@@ -104,7 +104,7 @@
       var api = new JitsiMeetExternalAPI(domain, options);
         
       api.addListener('participantJoined', () => {
-        $('#call-wrapper .call-jitsi').addClass('joined');
+        $('#call-wrapper #call-jitsi').addClass('joined');
       });
       api.addListener('participantLeft', () => {
         window.location.href = window.root

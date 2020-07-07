@@ -81,7 +81,7 @@
 
   // Global Vars
 
-  window.root = '/oasis-web';
+  window.root = '/oasiscall';
   window.meetingID = Date.now();
 
   // MailChimp Form

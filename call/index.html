@@ -39,76 +39,91 @@
       <a class="navbar-logo" href="#"><img class="img-fluid" src="../img/logo-white.png"/></a>
     </div>
   </nav>
-  <section class="page-section d-flex h-100">
-      <div id="call-wrapper" class="container d-flex justify-content-center align-items-center">
-        <div class="row">
+  <section class="page-section d-flex h-100 align-items-center">
+    <div id="call-slider" class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide d-flex align-items-center justify-content-center">
           <div class="col-8 mx-auto text-center">
-            <div class="call-loading d-none">
-              <h4 class="text-light">
-                Estamos preparando su llamada.<br/>
-                <span class="font-weight-light">
-                  Una persona de nuestro equipo estará
-                  contigo en instantes.
-                </span>
-              </h4>
-            </div>
-            <div class="call-error d-none">
-              <h4 class="text-light">
-                Su dispositivo no es compatible con Oasis Call.<br/>
-                <span class="font-weight-light">
-                  Una persona de nuestro equipo se pondrá en contacto contigo telefónicamente para coordinar el llamado.
-                </span>
-              </h4>
-            </div>
+            <h4 class="text-light">
+              En este momento todos nuestros coachs estan ocupados.<br/>
+              <span class="font-weight-light">
+                Nos estatemos contactando contigo a la brevedad para coordinar la llamada.
+              </span>
+            </h4>
+          </div>
+        </div>
+        <div class="swiper-slide d-flex align-items-center justify-content-center">
+          <div class="col-8 mx-auto text-center">
+            <h4 class="text-light">
+              Estamos preparando su llamada.<br/>
+              <span class="font-weight-light">
+                Una persona de nuestro equipo estará
+                contigo dentro de los próximos minutos.
+              </span>
+            </h4>
+          </div>
+        </div>
+        <div class="swiper-slide d-flex align-items-center">
+          <div class="col-8 mx-auto text-center">
             <div id="call-jitsi" class="rounded embed-responsive embed-responsive-16by9"></div>
+          </div>
+        </div>
+        <div class="swiper-slide d-flex align-items-center justify-content-center">
+          <div class="col-8 mx-auto text-center">
+            <h4 class="text-light">
+              Gracias por llamarnos.<br/>
+              <span class="font-weight-light">
+                Esperamos que haya sido de tu agrado.
+              </span>
+            </h4>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   <!-- JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/mobile-detect.min.js"></script>
+  <script src="../vendor/swiper/swiper.min.js"></script>
   <script src='https://meet.jit.si/external_api.js'></script>
   <script>
-      if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 6) {
-        $('.call-error').removeClass('d-none');
-      }
-      else {
-        $('.call-loading').removeClass('d-none');
-      }
 
-      window.root = '/oasiscall';
-      var domain = "meet.jit.si";
-      var meetingName = "oasiscall" + window.location.href.split('#')[1];
-      var options = {
-        roomName: meetingName,
-        width: "100%",
-        height: "100%",
-        parentNode: document.querySelector('#call-jitsi'),
-        configOverwrite: {
-            disableDeepLinking: true,
-        },
-        interfaceConfigOverwrite: {
-          LANG_DETECTION: true,
-          filmStripOnly: false,
-          TOOLBAR_BUTTONS: ['microphone', 'camera'],
-          SHOW_JITSI_WATERMARK: false,
-          JITSI_WATERMARK_LINK: 'https://jitsi.org',
-          SHOW_WATERMARK_FOR_GUESTS: false,
-          SHOW_BRAND_WATERMARK: false,
-          BRAND_WATERMARK_LINK: '',
-          SHOW_CHROME_EXTENSION_BANNER: false
-        }
+    var navigation = new Swiper('#call-slider', {
+      speed: 1000,
+      initialSlide: 1
+    });
+
+    window.root = '/oasiscall';
+    var domain = "meet.jit.si";
+    var meetingName = "oasiscall" + window.location.href.split('#')[1];
+    var options = {
+      roomName: meetingName,
+      width: "100%",
+      height: "100%",
+      parentNode: document.querySelector('#call-jitsi'),
+      configOverwrite: {
+          disableDeepLinking: true,
+      },
+      interfaceConfigOverwrite: {
+        LANG_DETECTION: true,
+        filmStripOnly: false,
+        TOOLBAR_BUTTONS: ['microphone', 'camera'],
+        SHOW_JITSI_WATERMARK: false,
+        JITSI_WATERMARK_LINK: 'https://jitsi.org',
+        SHOW_WATERMARK_FOR_GUESTS: false,
+        SHOW_BRAND_WATERMARK: false,
+        BRAND_WATERMARK_LINK: '',
+        SHOW_CHROME_EXTENSION_BANNER: false
       }
-      var api = new JitsiMeetExternalAPI(domain, options);
-        
-      api.addListener('participantJoined', () => {
-        $('#call-wrapper #call-jitsi').addClass('joined');
-      });
-      api.addListener('participantLeft', () => {
-        window.location.href = window.root
-      });
+    }
+    var api = new JitsiMeetExternalAPI(domain, options);
+      
+    api.addListener('participantJoined', () => {
+      navigation.slideTo(2);
+    });
+    api.addListener('participantLeft', () => {
+      navigation.slideTo(3);
+    });
   </script>
 </body>
 </html>

@@ -1,6 +1,14 @@
 (function($) {
   "use strict"; // Start of use strict
 
+
+  // Global Vars
+
+  window.root = '/oasiscall';
+  window.meetingID = Date.now();
+  window.userCompatible = true;
+  checkBrowser();
+
   // Preloader
 
   $(window).on('load', function () {
@@ -10,6 +18,29 @@
       });
     }), 1000);
   });
+  
+  function checkBrowser(){
+    if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 13){
+      nonCompatible();
+      window.userCompatible = false;
+    }
+    else if (BrowserDetect.browser === 'Chrome' && BrowserDetect.version < 83){
+      nonCompatible();
+      window.userCompatible = false;
+    }
+    else if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 78){
+      nonCompatible();
+      window.userCompatible = false;
+    }
+    else if (BrowserDetect.browser === 'Explorer'){
+      nonCompatible();
+      window.userCompatible = false;
+    }
+  }
+  function nonCompatible(){
+    $('#non-compatible').removeClass('d-none');
+    $('#submit-call').text('Quiero que me llamen');
+  }
 
   // Navigation
 
@@ -77,12 +108,6 @@
     });
 
   }
-  
-
-  // Global Vars
-
-  window.root = '/oasiscall';
-  window.meetingID = Date.now();
 
   // MailChimp Form
 
@@ -99,8 +124,13 @@
     }
   });
   
-  $('#call-form input[name="MEETINGID"]').val("https://meet.jit.si/oasiscall" + meetingID);
   $('#call-form input[name="EMAIL"]').val(meetingID + "@oasiscalls.com");
+  if (window.userCompatible){
+    $('#call-form input[name="MEETINGID"]').val("https://meet.jit.si/oasiscall" + meetingID);
+  }
+  else{
+    $('#call-form input[name="MEETINGID"]').val("Llamar por teléfono");
+  }
 
 
 })(jQuery); // End of use strict

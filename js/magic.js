@@ -24,7 +24,7 @@
       nonCompatible();
       window.userCompatible = false;
     }
-    else if (BrowserDetect.browser === 'Chrome' && BrowserDetect.version < 83){
+    else if (BrowserDetect.browser === 'Chrome' && BrowserDetect.version < 82){
       nonCompatible();
       window.userCompatible = false;
     }

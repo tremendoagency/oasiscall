@@ -20,7 +20,7 @@
   });
   
   function checkBrowser(){
-    if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 13){
+    if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 10){
       nonCompatible();
       window.userCompatible = false;
     }

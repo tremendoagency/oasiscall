@@ -38,9 +38,6 @@ h6 {
   font-weight: 400;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
-h1{
-  
-}
 h2{
   font-size: 1rem;
 }
@@ -342,8 +339,8 @@ img::-moz-selection {
 .mobile-navbar a{
   font-size: 2rem;
 }
-.mobile-navbar a:hover, .mobile-navbar a.active{
-}
+/* .mobile-navbar a:hover, .mobile-navbar a.active{
+} */
 
 .mobile-navbar .closebtn {
   position: absolute;
@@ -501,7 +498,6 @@ ul.social-buttons li a {
 
 #download .badges .badge-link {
   display: inline;
-  margin-bottom: 25px;
 }
 
 #download .badges .badge-link:last-child {

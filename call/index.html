@@ -101,9 +101,17 @@
       width: "100%",
       height: "100%",
       parentNode: document.querySelector('#call-jitsi'),
-      configOverwrite: {
-          disableDeepLinking: true,
-      },
+      configOverwrite:{
+        minParticipants: 2,
+        requireDisplayName: false,
+        enableWelcomePage: false,
+        prejoinPageEnabled: false,
+        disableInviteFunctions: true,
+        remoteVideoMenu: {
+          disableKick: true
+        },
+        brandingDataUrl: 'https://tremendoagency.github.io/oasiscall/jitsi-branding.json',
+      }
       interfaceConfigOverwrite: {
         DISPLAY_WELCOME_PAGE_CONTENT: false,
         LANG_DETECTION: true,

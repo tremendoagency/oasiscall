@@ -20,7 +20,7 @@
   });
   
   function checkBrowser(){
-    if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 10){
+    if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 13){
       nonCompatible();
       window.userCompatible = false;
     }
@@ -28,7 +28,7 @@
       nonCompatible();
       window.userCompatible = false;
     }
-    else if (BrowserDetect.browser === 'Safari' && BrowserDetect.version < 78){
+    else if (BrowserDetect.browser === 'Firefox' && BrowserDetect.version < 78){
       nonCompatible();
       window.userCompatible = false;
     }

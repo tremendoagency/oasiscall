@@ -1,6 +1,6 @@
 {
-  "backgroundColor": "#000",
-  "backgroundImageUrl": "https://tremendoagency.github.io/oasiscall/img/header-bg.jpg",
-  "logoClickUrl": "https://tremendoagency.github.io/oasiscall",
-  "logoImageUrl": "https://tremendoagency.github.io/oasiscall/img/logo-white.png"
+  backgroundColor: '#000',
+  backgroundImageUrl: 'https://tremendoagency.github.io/oasiscall/img/header-bg.jpg',
+  logoClickUrl: 'https://tremendoagency.github.io/oasiscall',
+  logoImageUrl: 'https://tremendoagency.github.io/oasiscall/img/logo-white.png'
 }

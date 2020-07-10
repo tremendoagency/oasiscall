@@ -117,7 +117,12 @@
       E003: 'Ingresá un email válido',
     },
     onOk: (message) => {
-      window.location.href = window.root + '/call/#'+meetingID;
+      if(window.userCompatible){
+        window.location.href = window.root + '/call/#'+meetingID;
+      }
+      else{
+        $('#formModal').modal('hide');
+      }
     }
   });
   

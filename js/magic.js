@@ -22,28 +22,24 @@
   function checkBrowser(){
     if (BrowserDetect.browser === 'Safari'){
       nonCompatible();
-      window.userCompatible = false;
     }
     else if (BrowserDetect.browser === 'Chrome' && BrowserDetect.version < 82){
       nonCompatible();
-      window.userCompatible = false;
     }
     else if (BrowserDetect.browser === 'Firefox' && BrowserDetect.version < 78){
       nonCompatible();
-      window.userCompatible = false;
     }
     else if (BrowserDetect.browser === 'Explorer'){
       nonCompatible();
-      window.userCompatible = false;
     }
     else if(isMobile()){
       nonCompatible();
-      window.userCompatible = false;
     }
   }
   function nonCompatible(){
     $('#non-compatible').removeClass('d-none');
     $('#submit-call').text('Quiero que me llamen');
+    window.userCompatible = false;
   }
 
   // Navigation
@@ -117,7 +113,7 @@
     fields: '0:EMAIL,1:CONTACT,2:FULLNAME,3:PHONE,4:MEETINGID',
     submitSelector: '#submit-call',
     customMessages: {
-      E001: 'Completá tu nombre',
+      E001: 'Completá este campo',
       E003: 'Ingresá un email válido',
     },
     onOk: (message) => {
@@ -126,6 +122,7 @@
       }
       else{
         $('#formModal').modal('hide');
+        alert('Hemos recibido tu solicitud, pronto nos pondremos en contacto.');
       }
     }
   });

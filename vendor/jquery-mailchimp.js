@@ -64,8 +64,8 @@
           request(cfg.url.replace('/post?', '/post-json?').concat('&c=?'), getData(),
             function (response) {
               const mcr = new McResponse(response, cfg.customMessages);
-
               if (mcr.isError && !isNaN(mcr.input)) {
+                if (mcr.input == 5){ mcr.input = 3}
                 inputs[mcr.input].$errorEl.text(mcr.message);
                 inputs[mcr.input].$inputEl.trigger('mc:input:error');
               } else if (mcr.isError && isNaN(mcr.input)) {

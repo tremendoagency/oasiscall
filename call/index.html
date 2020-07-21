@@ -77,7 +77,12 @@
 
     var navigation = new Swiper('#call-slider', {
       speed: 1000,
-      initialSlide: 1
+      initialSlide: 1,
+      autoplay: {
+        delay: 120000,
+        reverseDirection: true,
+        stopOnLastSlide: true
+      }
     });
 
     window.root = '/oasiscall';
@@ -116,10 +121,12 @@
       
     api.addListener('participantJoined', () => {
       navigation.slideTo(2);
+      navigation.autoplay.stop();
       $('.leftwatermark').hide();
     });
     api.addListener('participantLeft', () => {
       navigation.slideTo(3);
+      navigation.autoplay.stop();
     });
   </script>
 </body>
